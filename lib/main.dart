@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:destini/story_brain.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const Destini());
@@ -75,17 +75,20 @@ class _StoryPageState extends State<StoryPage> {
             ),
             Expanded(
                 flex: 2,
-                child: MaterialButton(
-                  onPressed: () {
-                    setState(() {
-                      storyBrain.nextStory(2);
-                    });
-                  },
-                  color: Colors.blue,
-                  child: Text(
-                    storyBrain.getChoice2(),
-                    style: const TextStyle(
-                      fontSize: 20.0,
+                child: Visibility(
+                  visible: storyBrain.buttonShouldBeVisible(),
+                  child: MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        storyBrain.nextStory(2);
+                      });
+                    },
+                    color: Colors.blue,
+                    child: Text(
+                      storyBrain.getChoice2(),
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 )),
